@@ -18,8 +18,28 @@ const getSpeceficBlogComment = (id) =>{
 
 }
 
+const deleteComment = (id) =>{
+    const res = commentCollection.findByIdAndDelete(id)
+    return res;
+}
+
+const updateComment = (id,data) =>{
+    const res = commentCollection.findByIdAndUpdate(id,{
+        $set:{
+            body:data
+        }
+    },{
+        new:true
+    })
+
+    return res;
+
+}
+
 module.exports = {
     addblogsComment,
     getblogsComment,
-    getSpeceficBlogComment
+    getSpeceficBlogComment,
+    deleteComment,
+    updateComment
 }
